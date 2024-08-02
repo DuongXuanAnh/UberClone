@@ -5,20 +5,19 @@ import { DestinationContext } from '@/context/DestinationContext';
 
 const SearchSection = () => {
 
-  const {source, setSource} = useContext(SourceContext);
-  const {destination, setDestination} = useContext(DestinationContext);
 
-  useEffect(() => {
+
+  // useEffect(() => {
     
-    if(source){
+  //   if(source){
 
-    }
-    
-    if(destination){
+  //   }
 
-    }
+  //   if(destination){
 
-  },[source, destination]);
+  //   }
+
+  // },[source, destination]);
 
   return (
     <>
