@@ -8,6 +8,7 @@ https://www.youtube.com/watch?v=pwsjvnADNGk&ab_channel=TubeGuruji
 - Clerk - using for create login with social website
 - Google Cloud - Using for creating API key
 - React Google Places Autocomplete (https://tintef.github.io/react-google-places-autocomplete/docs/)
+- react-google-maps/api (https://www.npmjs.com/package/@react-google-maps/api)
 
 
 

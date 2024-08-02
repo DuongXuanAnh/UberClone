@@ -9,7 +9,15 @@ const SearchSection = () => {
   const {destination, setDestination} = useContext(DestinationContext);
 
   useEffect(() => {
-    console.log(source, destination);
+    
+    if(source){
+
+    }
+    
+    if(destination){
+
+    }
+
   },[source, destination]);
 
   return (
