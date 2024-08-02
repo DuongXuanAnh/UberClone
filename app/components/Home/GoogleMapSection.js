@@ -1,5 +1,5 @@
 import React, { use, useContext, useEffect } from 'react'
-import { GoogleMap, MarkerF, OverlayView, useJsApiLoader } from '@react-google-maps/api';
+import { DirectionsRenderer, GoogleMap, MarkerF, OverlayView, useJsApiLoader } from '@react-google-maps/api';
 import { SourceContext } from '@/context/SourceContext';
 import { DestinationContext } from '@/context/DestinationContext';
 
@@ -9,10 +9,6 @@ const containerStyle = {
 };
 
 const GoogleMapSection = () => {
-  // const { isLoaded } = useJsApiLoader({
-  //   id: 'google-map-script',
-  //   googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY
-  // })
 
   const {source, setSource} = useContext(SourceContext);
   const {destination, setDestination} = useContext(DestinationContext);
@@ -22,6 +18,8 @@ const GoogleMapSection = () => {
   })
 
   const [map, setMap] = React.useState(null)
+
+  const [directionRoutePoints, setdirectionRoutePoints] = React.useState([])
 
   useEffect(() => {
       
@@ -37,6 +35,11 @@ const GoogleMapSection = () => {
           lng: source.lng
         })
       }
+
+      if(source?.length!=[] && destination?.length!=[]){
+        directionRoute();
+      }
+
   },[source]);
 
   useEffect(() => {
@@ -48,7 +51,28 @@ const GoogleMapSection = () => {
         lng: destination.lng
       })
     }
+
+    if(source?.length!=[] && destination?.length!=[]){
+      directionRoute();
+    }
+
 },[destination]);
+
+  const directionRoute = () => {
+    const directionsService = new window.google.maps.DirectionsService();
+    
+    directionsService.route({
+        origin: {lat: source?.lat, lng: source?.lng},
+        destination: {lat: destination?.lat, lng: destination?.lng},
+        travelMode: window.google.maps.TravelMode.DRIVING
+    }, (result, status) => {
+        if(status === google.maps.DirectionsStatus.OK){
+            setdirectionRoutePoints(result)
+        }else{
+            console.error(`error fetching directions ${result}`);
+        }
+    })
+  }
 
   const onLoad = React.useCallback(function callback(map) {
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
@@ -91,6 +115,18 @@ const GoogleMapSection = () => {
             </OverlayView>
         </MarkerF>
         
+
+      <DirectionsRenderer 
+        directions={directionRoutePoints} 
+        options={{
+          polylineOptions:{
+            strokeColor: '#000',
+            strokeWeight: 5,
+          },
+          suppressMarkers: true,
+        }}
+      />
+
       </GoogleMap>
   )
 }
