@@ -5,6 +5,19 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 Project from
 https://www.youtube.com/watch?v=pwsjvnADNGk&ab_channel=TubeGuruji
 
+Clerk - using for create login with social website
+
+
+
+
+
+
+
+
+
+
+
+
 First, run the development server:
 
 ```bash
