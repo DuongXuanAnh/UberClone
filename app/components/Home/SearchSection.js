@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { use, useContext, useEffect } from 'react'
 import InputItem from './InputItem'
+import { SourceContext } from '@/context/SourceContext';
+import { DestinationContext } from '@/context/DestinationContext';
 
 const SearchSection = () => {
+
+  const {source, setSource} = useContext(SourceContext);
+  const {destination, setDestination} = useContext(DestinationContext);
+
+  useEffect(() => {
+    console.log(source, destination);
+  },[source, destination]);
+
   return (
     <>
     <div className='p-2 md:p-6 border-[2px] rounded-xl'>
