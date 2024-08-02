@@ -1,5 +1,5 @@
 import React, { use, useContext, useEffect } from 'react'
-import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, MarkerF, OverlayView, useJsApiLoader } from '@react-google-maps/api';
 import { SourceContext } from '@/context/SourceContext';
 import { DestinationContext } from '@/context/DestinationContext';
 
@@ -76,8 +76,20 @@ const GoogleMapSection = () => {
         // }
       >
         { /* Child components, such as markers, info windows, etc. */ }
-        <MarkerF position={{lat: source?.lat, lng: source?.lng}} icon={{url:"/circle.png", scaledSize:{width:20, height:20}}}/>
-        <MarkerF position={{lat: destination?.lat, lng: destination?.lng}} icon={{url:"/triangle.png", scaledSize:{width:20, height:20}}}/>
+        <MarkerF position={{lat: source?.lat, lng: source?.lng}} icon={{url:"/circle.png", scaledSize:{width:20, height:20}}}>
+            <OverlayView position={{lat: source?.lat, lng: source?.lng}} mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}>
+                <div className='p-2 bg-white inline-block'>
+                  <p className='text-black text-[12px]'>{source?.label}</p>
+                </div>
+            </OverlayView>
+        </MarkerF>
+        <MarkerF position={{lat: destination?.lat, lng: destination?.lng}} icon={{url:"/triangle.png", scaledSize:{width:20, height:20}}}>
+            <OverlayView position={{lat: destination?.lat, lng: destination?.lng}} mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}>
+                <div className='p-2 bg-white inline-block'>
+                  <p className='text-black text-[12px]'>{destination?.label}</p>
+                </div>
+            </OverlayView>
+        </MarkerF>
         
       </GoogleMap>
   )
