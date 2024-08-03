@@ -8,8 +8,9 @@ function CarListOption({distance}) {
 
   return (
     <>
+        <div className='font-bold text-[22px] mt-5'>Recomended</div>
+
     <div className='mt-5 p-5 overflow-auto h-[250px]'>
-        <div className='font-bold text-[22px]'>Recomended</div>
 
         {
             CarListData.map((item, index) => (
