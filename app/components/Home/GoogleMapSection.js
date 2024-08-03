@@ -86,6 +86,8 @@ const GoogleMapSection = () => {
     setMap(null)
   }, [])
 
+  
+
   return (
       <GoogleMap
         mapContainerStyle={containerStyle}
