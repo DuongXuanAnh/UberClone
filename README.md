@@ -9,6 +9,7 @@ https://www.youtube.com/watch?v=pwsjvnADNGk&ab_channel=TubeGuruji
 - Google Cloud - Using for creating API key
 - React Google Places Autocomplete (https://tintef.github.io/react-google-places-autocomplete/docs/)
 - react-google-maps/api (https://www.npmjs.com/package/@react-google-maps/api)
+- Stripe - for payment gate way (https://stripe.com/en-cz)
 
 
 
